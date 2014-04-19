@@ -19,7 +19,7 @@ bool ready = false;
 ostream& scout(ostream& stream)
 {
 	mtx.lock();
-	cout(stream, s);
+	cout(stream);
 	mtx.unlock();
 }
 
