@@ -16,7 +16,7 @@ mutex mtx;
 condition_variable cv;
 bool ready = false;
 
-void scout(ostream& stream, const char* s)
+ostream& scout(ostream& stream)
 {
 	mtx.lock();
 	cout(stream, s);
