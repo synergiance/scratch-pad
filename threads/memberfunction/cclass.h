@@ -15,10 +15,10 @@ using namespace std;
 class CClass
 {
 public:
-    CClass();
+	void start();
 private:
 	void main();
-	thread thrClass;
+	//thread thrClass;
 };
 
 #endif /* CCLASS_H_ */

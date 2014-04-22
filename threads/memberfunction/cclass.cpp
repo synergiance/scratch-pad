@@ -14,9 +14,9 @@
 
 using namespace std;
 
-CClass::CClass()
+void CClass::start()
 {
-    thrClass(CClass::main, this);
+    thread thrClass(&CClass::main, this);
     thrClass.join();
 }
 

@@ -13,5 +13,6 @@ using namespace std;
 int main()
 {
     CClass theClass;
+	theClass.start();
 	return 0;
 }
