@@ -3,7 +3,7 @@ CFLAGS=-c -std=c++11
 
 all: mpass
 
-mpass: main.o
+mpass: main.o cclass.o
 	$(CC) main.o cclass.o -o mpass
 
 main.o: main.cpp
