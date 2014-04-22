@@ -1,0 +1,13 @@
+CC=g++
+CFLAGS=-c -std=c++11
+
+all: mpass
+
+mpass: main.o
+	$(CC) main.o cclass.o -o mpass
+
+main.o: main.cpp
+	$(CC) $(CFLAGS) main.cpp
+
+cclass.o
+	$(CC) $(CFLAGS) cclass.cpp
