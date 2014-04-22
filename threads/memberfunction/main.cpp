@@ -14,5 +14,6 @@ int main()
 {
     CClass theClass;
 	theClass.start();
+	theClass.wait();
 	return 0;
 }

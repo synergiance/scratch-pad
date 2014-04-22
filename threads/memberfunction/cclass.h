@@ -16,9 +16,10 @@ class CClass
 {
 public:
 	void start();
+	void wait();
 private:
 	void main();
-	//thread thrClass;
+	thread thrClass;
 };
 
 #endif /* CCLASS_H_ */

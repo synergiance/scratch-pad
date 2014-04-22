@@ -16,7 +16,11 @@ using namespace std;
 
 void CClass::start()
 {
-    thread thrClass(&CClass::main, this);
+    thrClass = thread(&CClass::main, this);
+}
+
+void CClass::wait()
+{
     thrClass.join();
 }
 
