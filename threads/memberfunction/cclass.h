@@ -17,7 +17,7 @@ class CClass
 public:
     CClass();
 private:
-	main();
+	void main();
 	thread thrClass;
 };
 

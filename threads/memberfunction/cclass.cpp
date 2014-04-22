@@ -20,7 +20,7 @@ CClass::CClass()
     thrClass.join();
 }
 
-CClass::main()
+void CClass::main()
 {
     cout<<"Printing from member function\n";
 }
