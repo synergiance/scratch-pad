@@ -16,7 +16,7 @@ using namespace std;
 
 CClass::CClass()
 {
-    thrClass(CClass::main);
+    thrClass(CClass::main, this);
     thrClass.join();
 }
 
