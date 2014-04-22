@@ -9,5 +9,5 @@ mpass: main.o
 main.o: main.cpp
 	$(CC) $(CFLAGS) main.cpp
 
-cclass.o
+cclass.o: cclass.cpp
 	$(CC) $(CFLAGS) cclass.cpp
