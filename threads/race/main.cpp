@@ -8,15 +8,16 @@
 
 // Count with a long long with another thread and display it on screen
 
-#include <iostream>
+//#include <iostream>
+#include <stdio.h>
 #include <signal.h>
 #include <thread>
 
-using namespace std;
+//using namespace std;
 
 bool stop;
 long long number;
-thread counter;
+std::thread counter;
 
 void sigHandler(int signum)
 {
@@ -34,9 +35,11 @@ int main()
 {
     signal(SIGINT, sigHandler);
     stop = false;
-    counter = thread(thrMain);
+    counter = std::thread(thrMain);
     while (!stop) {
-        cout<<number<<endl;
+        //std::cout<<number<<std::endl;
+        //puts(number);
+        printf("%lld\n", number);
     }
     counter.join();
 }
