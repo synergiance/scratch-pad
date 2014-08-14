@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <thread>
+#include <unistd.h>
 
 //using namespace std;
 
@@ -59,5 +60,6 @@ int main()
         }
         puts(d);
     }
+    usleep(200);
     counter.join();
 }
