@@ -9,7 +9,7 @@
 // Count with a long long with another thread and display it on screen
 
 //#include <iostream>
-//#include <stdio.h>
+#include <stdio.h>
 #include <signal.h>
 #include <thread>
 
