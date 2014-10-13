@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
     for (int c = 0; c < 11; c++) {
         cout<<"\33[A\33[J[";
         for (int d = 0; d < 10; d++) if (d < c) cout<<"="; else cout<<" ";
-        cout<<"]\n";
+        cout<<"] "<<c*10<<"%\n";
         sleep(1);
     }
     return 0;
