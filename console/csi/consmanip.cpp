@@ -11,7 +11,6 @@
 // Internal Includes
 #include <cstdio>
 #include <iostream>
-#include <limits>
 #include <string>
 
 // Posix Includes
@@ -46,7 +45,7 @@ void finalize() {
     if (initialized) tcsetattr(0, TCSANOW, &settingsbak);
 }
 
-bool linebuffered(bool on = true) {
+bool linebuffered(bool on) {
     struct termios settings;
     if (!initialized) return false;
     if (tcgetattr(0, &settings)) return false;
@@ -62,7 +61,7 @@ bool linebuffered(bool on = true) {
     return true;
 }
 
-bool echo(bool on = true) {
+bool echo(bool on) {
    struct termios settings;
    if (!initialized) return false;
    if (tcgetattr(0, &settings)) return false;
@@ -70,11 +69,11 @@ bool echo(bool on = true) {
    if (on) settings.c_lflag |= ECHO;
    else    settings.c_lflag &= ~(ECHO);
 
-   return 0 = tcsetattr(0, TCSANOW, &settings);
+   return 0 == tcsetattr(0, TCSANOW, &settings);
 }
 
 // -1 for infinite waiting
-bool iskeypressed(unsigned timeout_ms = 0) {
+bool iskeypressed(unsigned timeout_ms) {
     if (!initialized) return false;
     struct pollfd pls[1];
     pls[0].fd = 0; // File descriptor 0 is stdin
