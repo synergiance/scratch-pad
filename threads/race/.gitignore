@@ -1,3 +1,5 @@
 race
 *.o
 *.swp
+*.exe
+
