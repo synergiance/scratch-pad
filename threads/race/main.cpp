@@ -60,6 +60,6 @@ int main()
         }
         puts(d);
     }
-    usleep(200);
     counter.join();
+    usleep(200);
 }
