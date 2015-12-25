@@ -18,8 +18,8 @@
 // Normal headers
 
 #include <stdio.h> // Standard IO library
-#include <string> // String library
-// BIO * bui; == bio pointer
+//#include <string> // String library
+// BIO * bio; == bio pointer
 
 int main() {
     // Initializing OpenSSL
@@ -42,7 +42,7 @@ int main() {
     bio = BIO_new_connect("google.com:80"); // Our socket connection
     if(bio == NULL) // No socket means no communication
     {
-        puts("FATAL ERROR. Exiting.\n"; // Print scary looking error
+        puts("FATAL ERROR. Exiting.\n"); // Print scary looking error
         return -1;
     }
 
@@ -55,7 +55,7 @@ int main() {
     bool stop = false; // Stop condition
     int x; // Returned length
     char buf [1024]; // Buffer
-    std:string str; // All our data that we acquired, bwahahahahahahahahaha
+    //std::string str; // All our data that we acquired, bwahahahahahahahahaha
 
   /* BIO_write will attempt to write bytes to the socket. Return value is the
    * number of bytes written, 0 for a closed connection, or -1 for a technical
@@ -66,10 +66,10 @@ int main() {
         if(BIO_write(bio, "GET / http/1.1\r\n", 16) <= 0) { // Our socket write
             if(! BIO_should_retry(bio)) { // Check to see if we should retry
                 puts("FATAL WRITE ERROR. Exiting.\n"); // Print scary error
-		BIO_free_all(bio); // We'll learn about this later
+                BIO_free_all(bio); // We'll learn about this later
                 return -1;
             }
-            stop = false;
+            //stop = false;
         }
     }
 
@@ -84,11 +84,12 @@ int main() {
         if(x == 0) { // This indicates a closed connection
             stop = true; // This is what we will wait for
         } else if(x < 0) {
-            puts("READING TERMINATED EARLY!!!\n\n"); // Oopsie daisy
+            puts("\nREADING TERMINATED EARLY!!!\n"); // Oopsie daisy
             stop = true;
         } else {
             buf[x] = '\0'; // Set the string termination byte
-	    str += buf; // This will append the string
+            puts(buf); // Print out what we got
+            //str += buf; // This will append the string
         }
     }
 
@@ -100,14 +101,7 @@ int main() {
     BIO_free_all(bio); // We're free now!!!
     // BIO_reset(bio); // This would prime BIO for further use
 
-    // Now we print everything out
-    while(str.compare("") != 0) { // Test whether string is empty
-        buf = str.substr(0,1023).c_str(); // Fill the buffer
-        str.erase(0,1023); // Erase from string
-        puts(buf); // Print out whatever's there
-    }
-
-    puts("\n");
+    //puts(str.c_str());
 
     return 0;
 }
