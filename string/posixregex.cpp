@@ -29,8 +29,6 @@ int main() {
 
     char cBak; // This will store a displaced character
 
-    size_t c;
-
   /*
    * regcomp returns 0 if successful, and takes a number of flags:
    *   REG_EXTENDED - Use extended regular expressions
@@ -66,7 +64,7 @@ int main() {
             regexec(&rgxCmp, cursor, maxGrp, rgxGrp, 0); // Redo regex proper
         }
 
-        for (c = 0; c < numGrp; c++) {
+        for (size_t c = 0; c < numGrp; c++) {
             if (rgxGrp[c].rm_so == (size_t)-1)
                 break; // No more groups
 
