@@ -16,6 +16,7 @@
 #include <signal.h>     // Signal handler
 #include <string.h>     // C strings, only used for strncmp
 #include <sys/select.h> // Listen to many file descriptors
+#include <stdbool.h>    // C boolean library
 
 #define BUFSIZE 32
 
