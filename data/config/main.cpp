@@ -20,7 +20,7 @@ int main()
 {// This is where we begin
     CConfig test("testtype", "test value");
     for (size_t c = 0; c < 16; c++) {
-        char * buf = nullptr;
+        char buf[5];
         sprintf(buf, "%zu", c);
         CConfig addedThing("addedtype", string(buf));
         test.values.push_back(addedThing);
