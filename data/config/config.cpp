@@ -196,14 +196,20 @@ bool CConfig::parseHeader(string header, string& type, string& data)
 CConfig::CConfig(string type, string data)
 {// Pass a type and a name here to create a config
     bool allGood = true;
+    if (type.empty()) {
+        addError("Blank type");
+        allGood = false;
+    }
     for (char e : type)
         if (!isalnum(e))
             allGood = false;
-    for (char e : data) {
-        if (!isprint(e))
-            allGood = false;
-        if ((e == '<') || (e == '>') || (e == '"'))
-            allGood = false;
+    if (data.size() > 0) {
+        for (char e : data) {
+            if (!isprint(e))
+                allGood = false;
+            if ((e == '<') || (e == '>') || (e == '"'))
+                allGood = false;
+        }
     }
     if (!allGood)
         addError("Invalid characters");
@@ -220,6 +226,7 @@ CConfig::CConfig(string type, string data)
 string CConfig::format()
 {// Formats the data into custom xml format
     string str;
+    if (valueType.empty()) return string();
     str = "<" + valueType;
     if (valueData.size() > 0)
         str += "=\"" + valueData + "\"";

@@ -16,22 +16,8 @@
 #define OUTFILE = "config.out"
 #define  INFILE = "config.in"
 
-int main()
-{// This is where we begin
-    CConfig test("testtype", "test value");
-    for (size_t c = 0; c < 16; c++) {
-        char buf[5];
-        sprintf(buf, "%zu", c);
-        CConfig addedThing("addedtype", string(buf));
-        test.values.push_back(addedThing);
-    }
-    CConfig recursiveHolder("Recursive holder", "");
-    for (size_t c = 0; c < 4; c++) {
-        CConfig otherThing("key", "");
-        recursiveHolder.values.push_back(otherThing);
-    }
-    test.values.push_back(recursiveHolder);
-    std::string str = test.format();
+void write(std::string str)
+{// Write to screen
     const char * buf;
     for (;;) {
         if (str.size() == 0)
@@ -42,6 +28,26 @@ int main()
         write(STDOUT_FILENO, buf, c);
         str.erase(0, 64);
     }
+}
+
+int main()
+{// This is where we begin
+    CConfig test("testtype", "test value");
+    for (size_t c = 0; c < 16; c++) {
+        char buf[5];
+        sprintf(buf, "%zu", c);
+        CConfig addedThing("addedtype", string(buf));
+        test.values.push_back(addedThing);
+    }
+    CConfig recursiveHolder("RecursiveHolder", "");
+    write(recursiveHolder.getErrors());
+    for (size_t c = 0; c < 4; c++) {
+        CConfig otherThing("key", "");
+        recursiveHolder.values.push_back(otherThing);
+    }
+    test.values.push_back(recursiveHolder);
+    std::string str = test.format();
+    write(str);
     write(STDOUT_FILENO, "\n", 1);
     return 0;
 }
