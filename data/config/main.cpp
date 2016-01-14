@@ -49,5 +49,9 @@ int main()
     std::string str = test.format();
     write(str);
     write(STDOUT_FILENO, "\n", 1);
+    CConfig test2(str);
+    write(test2.getErrors());
+    write(test2.format());
+    write(STDOUT_FILENO, "\n", 1);
     return 0;
 }

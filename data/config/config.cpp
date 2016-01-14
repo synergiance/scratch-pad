@@ -43,7 +43,7 @@ CConfig::CConfig(string config)
                 if (allGood)
                     allGood = parseHeader(str.substr(1, a - 1), t, d);
                 if (allGood) {
-                    if (str.compare(b + 1, str.size() - b - 1, "/" + t) != 0) {
+                    if (str.compare(b + 1, str.size() - b - 2, "/" + t) != 0) {
                         allGood = false;
                         addError("Mismatched tag: " + t);
                     } else {
@@ -55,6 +55,10 @@ CConfig::CConfig(string config)
             allGood = false;
             addError("Parsing error: expecting <>");
         }
+    }
+    if (allGood) {
+        valueType = t;
+        valueData = d;
     }
 }
 
