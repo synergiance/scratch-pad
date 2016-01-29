@@ -60,25 +60,25 @@ int main(int argc, char *argv[]) {
     primes[0] = 2; //seed
 
     while (count < target) {
-        sieve = calloc(svsz);
+        sieve = calloc(svsz, sizeof(char));
         //for (c = 0; c < svsz; c++) sieve[c] = 1;
         c = 0;
         e = 0;
         flag = 0;
         while (!flag) {
             while (c < count) {
-                sieve[0] = 0;
+                sieve[0] = 1;
                 if (offset == 0) {
-                    sieve[1] = 0;
+                    sieve[1] = 1;
                 }
                 for (d = primes[c] - (offset % primes[c]); d < svsz; d += primes[c]) {
-                    sieve[d] = 0;
+                    sieve[d] = 1;
                 }
                 c++;
             }
             sqcache = primes[count-1] * primes[count-1];
             for (d = e; offset + d < sqcache && d < svsz; d++) {
-                if (sieve[d]) {
+                if (!sieve[d]) {
                     primes[count++] = d + offset;
                     if (count == target) {
                         flag = 1;
