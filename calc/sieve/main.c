@@ -27,10 +27,13 @@ int main(int argc, char *argv[]) {
     size_t svsz = SVSZ;
     char tgtapnd[3];
     char chr;
+    unsigned char hitMax = 0;
 
     if (argc > 1) {
         target = atoi(argv[1]);
     }
+
+    printf("Prime: %zu\n", target);
 
     c = target % 10;
 
@@ -52,15 +55,34 @@ int main(int argc, char *argv[]) {
     }
     tgtapnd[2] = 0;
 
-    unsigned long long primes[target];
+    printf("Creating array\n");
+
+    unsigned long long * primes;
     char * sieve;
+
+    primes = malloc(target * sizeof(long long));
+
+    if (primes == NULL) {
+        printf("Memory initialization failed, exiting\n");
+        return 1;
+    }
 
     unsigned long long sqcache;
 
     primes[0] = 2; //seed
 
+    printf("Ready to calc!\n");
+
     while (count < target) {
         sieve = calloc(svsz, sizeof(char));
+        printf("Sieve: %p\n", sieve);
+        if (sieve == NULL) {
+            printf("Memory exceeded, backing off!\n");
+            svsz /= 2;
+            sieve = calloc(svsz, sizeof(char));
+            hitMax = 1;
+        }
+        fflush(stdout);
         //for (c = 0; c < svsz; c++) sieve[c] = 1;
         c = 0;
         e = 0;
@@ -90,7 +112,8 @@ int main(int argc, char *argv[]) {
             e = d;
         }
         offset += svsz;
-        svsz *= 2;
+        if (!hitMax)
+            svsz *= 2;
         free(sieve);
     }
     printf("The %zu%s prime is: \x1b[31m%llu\x1b[0m\n", target, tgtapnd, primes[target - 1]);
