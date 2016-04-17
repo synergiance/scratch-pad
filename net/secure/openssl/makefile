@@ -1,7 +1,9 @@
 LFLAGS=-lssl -lcrypto
 CC=g++
+BIN=sget
+OBJ=ssl.o sock.o main.o
 
-.phony: bio
+ALL: $(BIN)
 
-bio: bio.cpp
-	$(CC) $(LFLAGS) bio.cpp
+$(BIN): $(OBJ)
+	$(CC) $(LFLAGS) $(OBJ)
