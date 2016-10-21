@@ -16,9 +16,9 @@
 
 void sort(std::vector<unsigned> & a) {
     unsigned h = 0;
-    for (size_t c = 0; c < a.size(); c++) if (a[c] > h) h = a[c];
+    for (std::size_t c = 0; c < a.size(); c++) if (a[c] > h) h = a[c];
     if (h == 0) return;
-    size_t i = 0;
+    std::size_t i = 0;
     while (h > 1) {
         h >>= 1;
         i++;
