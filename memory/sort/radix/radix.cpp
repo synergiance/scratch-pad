@@ -24,7 +24,7 @@ void sort(std::vector<unsigned> & a) {
         i++;
     }
     unsigned d = 1;
-    for(short c = 0; c <= i; c++) {
+    for(std::size_t c = 0; c <= i; c++) {
         std::vector<unsigned> arraylow;
         std::vector<unsigned> arrayhigh;
         for (const unsigned& v: a) {
