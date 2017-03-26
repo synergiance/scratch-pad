@@ -12,3 +12,13 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <string.h>
+
+#include "sock.h"
+#include "ssl.h"
+
+addrlookup(const char *address) {
+}
+
+CSock::CSock() {
+}
+
