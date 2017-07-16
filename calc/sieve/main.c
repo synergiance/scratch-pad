@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     unsigned long long * primes;
     char * sieve;
 
-    primes = malloc(target * sizeof(long long));
+    primes = malloc(target * sizeof(long long)); //todo mlock
 
     if (primes == NULL) {
         printf("Memory initialization failed, exiting\n");

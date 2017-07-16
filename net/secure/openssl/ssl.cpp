@@ -24,6 +24,9 @@
 #include "ssl.h"
 
 SslObj::SslObj() {
+    sockbio  = NULL;
+    cert     = NULL;
+    certname = NULL;
     OpenSSL_add_all_algorithms();
     ERR_load_BIO_strings();
     ERR_load_crypto_strings();

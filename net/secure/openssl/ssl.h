@@ -23,13 +23,13 @@ class SslObj
 public:
     SslObj();
     bool initialize(int fd);
-    bool send(const void *data, int len);
-    bool recv(void *data, int len);
+    int send(const void *data, int len);
+    int recv(void *data, int len);
     virtual ~SslObj();
 private:
-    BIO        *sockbio = NULL;
-    X509          *cert = NULL;
-    X509_NAME *certname = NULL;
+    BIO *sockbio;
+    X509 *cert;
+    X509_NAME *certname;
     const SSL_METHOD *method;
     SSL *ssl;
     SSL_CTX *ctx;
