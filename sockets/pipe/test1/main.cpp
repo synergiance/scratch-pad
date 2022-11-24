@@ -2,7 +2,7 @@
  * main.cpp
  *
  *  Created on 23 April 2014
- *      By: Tim Gerety
+ *      By: Synergiance
  */
 
 #include <stdio.h>

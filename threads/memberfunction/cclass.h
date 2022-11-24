@@ -2,7 +2,7 @@
  * cclass.h
  *
  *  Created on 22 April 2014
- *      By: Tim Gerety
+ *      By: Synergiance
  */
 
 #include <thread>

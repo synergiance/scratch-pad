@@ -1,5 +1,5 @@
 /*
- * Created on October 12 2014 by Tim Gerety
+ * Created on October 12 2014 by Synergiance
  */
 
 #include <iostream>

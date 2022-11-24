@@ -10,7 +10,7 @@
  * Credit: Dioas http://pubs.opengroup.org/onlinepubs/7908799/xsh/termios.h.html
  *
  * How to use:
- * Always initialize before using, and finalize afterwatds
+ * Always initialize before using, and finalize afterwards
  */
 
 #define INFINITE (-1)
